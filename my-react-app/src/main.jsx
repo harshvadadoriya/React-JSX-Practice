@@ -8,6 +8,7 @@ import Comp4 from './ClassComp/Comp4';
 import FuncComp4 from './FuncComp.jsx/FuncComp4';
 import FuncComp5 from './FuncComp.jsx/FuncComp5';
 import FuncComp6 from './FuncComp.jsx/FuncComp6';
+import MyApp from './Practical2/MyApp';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
 	<React.StrictMode>
@@ -17,8 +18,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 		{/* <Comp3 name="Harsh" /> */}
 		{/* <Comp4 /> */}
 		{/* <FuncComp4 /> */}
-		{/* <FuncComp5 />
-		 */}
-		<FuncComp6 />
+		{/* <FuncComp5 />*/}
+		{/* <FuncComp6 /> */}
+		<MyApp />
 	</React.StrictMode>
 );
