@@ -4,7 +4,7 @@ const MyApp = () => {
 	return (
 		<>
 			<section className="main">
-				<div className="card container">
+				<div className="card container mx-3">
 					<div className="row date-container container">
 						<div className="col date-month-year">
 							<span className="date">12</span>
@@ -22,7 +22,7 @@ const MyApp = () => {
 						</div>
 					</button>
 					<div className="todo-container">
-						<div className="todo">
+						<div className="todo container-md">
 							<div className="todo-list">
 								<span>Go To Gym!</span>
 								<input type="radio" name="" id="" />
