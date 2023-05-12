@@ -1,4 +1,4 @@
-import { useFormik } from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
 const initialValues = {
@@ -18,60 +18,34 @@ const validationSchema = Yup.object({
 });
 
 const YoutubeForm = () => {
-	const formik = useFormik({
-		initialValues,
-		onSubmit,
-		validationSchema,
-	});
-
-	// console.log(formik.errors);
-	// console.log(formik.touched);
-
 	return (
-		<div>
-			<form onSubmit={formik.handleSubmit}>
+		<Formik
+			initialValues={initialValues}
+			validationSchema={validationSchema}
+			onSubmit={onSubmit}
+		>
+			<Form>
 				<div className="formControl">
 					<label htmlFor="name">Name</label>
-					<input
-						type="text"
-						name="name"
-						id="name"
-						{...formik.getFieldProps('name')}
-					/>
-					{formik.touched.name && formik.errors.name && (
-						<div className="error">{formik.errors.name}</div>
-					)}
+					<Field type="text" name="name" id="name" />
+					<ErrorMessage name="name" />
 				</div>
 
 				<div className="formControl">
 					<label htmlFor="email">E-mail</label>
-					<input
-						type="text"
-						name="email"
-						id="email"
-						{...formik.getFieldProps('email')}
-					/>
-					{formik.touched.email && formik.errors.email && (
-						<div className="error">{formik.errors.email}</div>
-					)}
+					<Field type="text" name="email" id="email" />
+					<ErrorMessage name="email" />
 				</div>
 
 				<div className="formControl">
 					<label htmlFor="channel">Channel</label>
-					<input
-						type="text"
-						name="channel"
-						id="channel"
-						{...formik.getFieldProps('channel')}
-					/>
-					{formik.touched.channel && formik.errors.channel && (
-						<div className="error">{formik.errors.channel}</div>
-					)}
+					<Field type="text" name="channel" id="channel" />
+					<ErrorMessage name="channel" />
 				</div>
 
 				<button type="submit">Submit</button>
-			</form>
-		</div>
+			</Form>
+		</Formik>
 	);
 };
 export default YoutubeForm;
