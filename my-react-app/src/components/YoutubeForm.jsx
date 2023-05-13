@@ -31,25 +31,33 @@ const YoutubeForm = () => {
 				<div className="formControl">
 					<label htmlFor="name">Name</label>
 					<Field type="text" name="name" id="name" />
-					<ErrorMessage name="name" />
+					<ErrorMessage name="name">
+						{(errorMsg) => <div className="error">{errorMsg}</div>}
+					</ErrorMessage>
 				</div>
 
 				<div className="formControl">
 					<label htmlFor="email">E-mail</label>
 					<Field type="text" name="email" id="email" />
-					<ErrorMessage name="email" />
+					<ErrorMessage name="email">
+						{(errorMsg) => <div className="error">{errorMsg}</div>}
+					</ErrorMessage>
 				</div>
 
 				<div className="formControl">
 					<label htmlFor="channel">Channel</label>
 					<Field type="text" name="channel" id="channel" />
-					<ErrorMessage name="channel" />
+					<ErrorMessage name="channel">
+						{(errorMsg) => <div className="error">{errorMsg}</div>}
+					</ErrorMessage>
 				</div>
 
 				<div className="formControl">
 					<label htmlFor="comments">Comments</label>
 					<Field as="textarea" id="comments" name="comments"></Field>
-					<ErrorMessage name="comments" />
+					<ErrorMessage name="comments">
+						{(errorMsg) => <div className="error">{errorMsg}</div>}
+					</ErrorMessage>
 				</div>
 
 				<div className="formControl">
@@ -57,7 +65,7 @@ const YoutubeForm = () => {
 					<Field name="address">
 						{(props) => {
 							const { field, form, meta } = props;
-							console.log(props);
+							// console.log(props);
 							return (
 								<div>
 									<input type="text" id="address" {...field} />
