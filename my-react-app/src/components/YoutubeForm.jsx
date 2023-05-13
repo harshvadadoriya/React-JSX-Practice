@@ -1,4 +1,11 @@
-import { Formik, Form, Field, ErrorMessage, FieldArray } from 'formik';
+import {
+	Formik,
+	Form,
+	Field,
+	ErrorMessage,
+	FieldArray,
+	FastField,
+} from 'formik';
 import * as Yup from 'yup';
 
 const initialValues = {
@@ -68,7 +75,7 @@ const YoutubeForm = () => {
 
 				<div className="formControl">
 					<label htmlFor="address">Address</label>
-					<Field name="address">
+					<FastField name="address">
 						{(props) => {
 							const { field, form, meta } = props;
 							// console.log(props);
@@ -79,7 +86,7 @@ const YoutubeForm = () => {
 								</div>
 							);
 						}}
-					</Field>
+					</FastField>
 				</div>
 
 				<div className="formControl">
@@ -104,7 +111,7 @@ const YoutubeForm = () => {
 					<label>List of phone numbers</label>
 					<FieldArray name="phNumbers">
 						{(fieldArrayProps) => {
-							console.log(fieldArrayProps);
+							// console.log(fieldArrayProps);
 							const { push, remove, form } = fieldArrayProps;
 							const { values } = form;
 							const { phNumbers } = values;
