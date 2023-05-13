@@ -5,6 +5,8 @@ const initialValues = {
 	name: '',
 	email: '',
 	channel: '',
+	comments: '',
+	address: '',
 };
 
 const onSubmit = (values) => {
@@ -15,6 +17,7 @@ const validationSchema = Yup.object({
 	name: Yup.string().required('Required'),
 	email: Yup.string().email('Invalid email format').required('Required'),
 	channel: Yup.string().required('Required'),
+	comments: Yup.string().required('Required'),
 });
 
 const YoutubeForm = () => {
@@ -41,6 +44,28 @@ const YoutubeForm = () => {
 					<label htmlFor="channel">Channel</label>
 					<Field type="text" name="channel" id="channel" />
 					<ErrorMessage name="channel" />
+				</div>
+
+				<div className="formControl">
+					<label htmlFor="comments">Comments</label>
+					<Field as="textarea" id="comments" name="comments"></Field>
+					<ErrorMessage name="comments" />
+				</div>
+
+				<div className="formControl">
+					<label htmlFor="address">Address</label>
+					<Field name="address">
+						{(props) => {
+							const { field, form, meta } = props;
+							console.log(props);
+							return (
+								<div>
+									<input type="text" id="address" {...field} />
+									{meta.touched && meta.error ? <div>{meta.error}</div> : null}
+								</div>
+							);
+						}}
+					</Field>
 				</div>
 
 				<button type="submit">Submit</button>
