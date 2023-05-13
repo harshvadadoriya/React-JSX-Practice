@@ -26,21 +26,13 @@ const onSubmit = (values, onSubmitProps) => {
 	// console.log(values);
 	console.log('onSubmitProps:', onSubmitProps);
 	onSubmitProps.setSubmitting(false);
-};
-
-const validateComments = (value) => {
-	let error;
-	if (!error) {
-		error = 'Required';
-	}
-	return error;
+	onSubmitProps.resetForm();
 };
 
 const validationSchema = Yup.object({
 	name: Yup.string().required('Required'),
 	email: Yup.string().email('Invalid email format').required('Required'),
 	channel: Yup.string().required('Required'),
-	comments: Yup.string().required('Required'),
 });
 
 const YoutubeForm = () => {
@@ -76,19 +68,6 @@ const YoutubeForm = () => {
 							<label htmlFor="channel">Channel</label>
 							<Field type="text" name="channel" id="channel" />
 							<ErrorMessage name="channel">
-								{(errorMsg) => <div className="error">{errorMsg}</div>}
-							</ErrorMessage>
-						</div>
-
-						<div className="formControl">
-							<label htmlFor="comments">Comments</label>
-							<Field
-								as="textarea"
-								id="comments"
-								name="comments"
-								validate={validateComments}
-							></Field>
-							<ErrorMessage name="comments">
 								{(errorMsg) => <div className="error">{errorMsg}</div>}
 							</ErrorMessage>
 						</div>
@@ -172,7 +151,7 @@ const YoutubeForm = () => {
 							</FieldArray>
 						</div>
 
-						<button
+						{/* <button
 							type="button"
 							onClick={() => formik.validateField('comments')}
 						>
@@ -199,13 +178,15 @@ const YoutubeForm = () => {
 							}
 						>
 							Visit fields
-						</button>
+						</button> */}
 						<button
 							type="submit"
 							disabled={!formik.isValid || formik.isSubmitting}
 						>
 							Submit
 						</button>
+
+						<button type="reset">Reset</button>
 					</Form>
 				);
 			}}
