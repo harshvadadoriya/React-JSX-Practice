@@ -26,11 +26,19 @@ const onSubmit = (values) => {
 	console.log(values);
 };
 
+const validateComments = (value) => {
+	let error;
+	if (!error) {
+		error = 'Required';
+	}
+	return error;
+};
+
 const validationSchema = Yup.object({
 	name: Yup.string().required('Required'),
 	email: Yup.string().email('Invalid email format').required('Required'),
 	channel: Yup.string().required('Required'),
-	comments: Yup.string().required('Required'),
+	// comments: Yup.string().required('Required'),
 });
 
 const YoutubeForm = () => {
@@ -69,7 +77,12 @@ const YoutubeForm = () => {
 
 				<div className="formControl">
 					<label htmlFor="comments">Comments</label>
-					<Field as="textarea" id="comments" name="comments"></Field>
+					<Field
+						as="textarea"
+						id="comments"
+						name="comments"
+						validate={validateComments}
+					></Field>
 					<ErrorMessage name="comments">
 						{(errorMsg) => <div className="error">{errorMsg}</div>}
 					</ErrorMessage>
