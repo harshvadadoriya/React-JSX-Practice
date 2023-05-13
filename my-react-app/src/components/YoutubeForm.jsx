@@ -22,8 +22,10 @@ const initialValues = {
 	phNumbers: [''],
 };
 
-const onSubmit = (values) => {
-	console.log(values);
+const onSubmit = (values, onSubmitProps) => {
+	// console.log(values);
+	console.log('onSubmitProps:', onSubmitProps);
+	onSubmitProps.setSubmitting(false);
 };
 
 const validateComments = (value) => {
@@ -38,7 +40,7 @@ const validationSchema = Yup.object({
 	name: Yup.string().required('Required'),
 	email: Yup.string().email('Invalid email format').required('Required'),
 	channel: Yup.string().required('Required'),
-	// comments: Yup.string().required('Required'),
+	comments: Yup.string().required('Required'),
 });
 
 const YoutubeForm = () => {
@@ -51,7 +53,7 @@ const YoutubeForm = () => {
 			// validateOnBlur={false}
 		>
 			{(formik) => {
-				console.log(formik);
+				// console.log(formik);
 				return (
 					<Form>
 						<div className="formControl">
@@ -198,7 +200,12 @@ const YoutubeForm = () => {
 						>
 							Visit fields
 						</button>
-						<button type="submit">Submit</button>
+						<button
+							type="submit"
+							disabled={!formik.isValid || formik.isSubmitting}
+						>
+							Submit
+						</button>
 					</Form>
 				);
 			}}
